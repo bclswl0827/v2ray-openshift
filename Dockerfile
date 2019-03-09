@@ -1,21 +1,21 @@
 FROM alpine:latest
 
-ENV CONFIG_JSON=none CERT_PEM=none KEY_PEM=none VER=4.15.0
+ENV CONFIG_JSON=none VER=4.15.0
 
 RUN apk add --no-cache --virtual .build-deps ca-certificates curl \
- && mkdir -m 777 /v2raybin \ 
- && cd /v2raybin \
+ && mkdir -m 777 /v2ray \ 
+ && cd /v2ray \
  && curl -L -H "Cache-Control: no-cache" -o v2ray.zip https://github.com/v2ray/v2ray-core/releases/download/v$VER/v2ray-linux-64.zip \
  && unzip v2ray.zip \
- && chmod +x /v2raybin/v2ray /v2raybin/v2ctl \ 
- && rm -rf /v2raybin/v2ray.zip /v2raybin/v2ray.sig /v2raybin/v2ctl.sig /v2raybin/doc /v2raybin/config.json /v2raybin/vpoint_socks_vmess.json /v2raybin/systemv /v2raybin/systemd /v2raybin/vpoint_vmess_freedom.json \
- && chgrp -R 0 /v2raybin \
- && chmod -R g+rwX /v2raybin 
- 
-ADD entrypoint.sh /entrypoint.sh
+ && chmod +x /v2ray/v2ray /v2ray/v2ctl \ 
+ && rm -rf /v2ray/v2ray.zip /v2ray/v2ray.sig /v2ray/v2ctl.sig /v2ray/doc /v2ray/config.json /v2ray/vpoint_socks_vmess.json /v2ray/systemv /v2ray/systemd /v2ray/vpoint_vmess_freedom.json \
+ && chgrp -R 0 /v2ray \
+ && chmod -R g+rwX /v2ray 
 
-RUN chmod +x /entrypoint.sh 
+ADD run.sh /run.sh
 
-ENTRYPOINT  /entrypoint.sh 
+RUN chmod +x /run.sh 
+
+ENTRYPOINT /run.sh 
 
 EXPOSE 8080
