@@ -8,5 +8,4 @@ RUN apk add --no-cache --virtual .build-deps ca-certificates curl bash \
 ADD configure.sh /configure.sh
 RUN chmod +x /configure.sh
 ENTRYPOINT /configure.sh
-CMD ["/usr/bin/v2ray/v2ray", "-config=/etc/v2ray/config.json"]
-EXPOSE 8080
+EXPOSE 80 8080
