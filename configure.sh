@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Clear previous configuration
 cat /dev/null > /etc/v2ray/config.json
 # V2Ray new configuration
