@@ -7,5 +7,5 @@ RUN apk add --no-cache --virtual .build-deps ca-certificates curl bash \
  && chgrp -R 0 /etc/v2ray \
  && chmod -R g+rwX /etc/v2ray \
  && echo -e '$CONFIG_JSON' > /etc/v2ray/config.json
-CMD ["v2ray", "-config=/etc/v2ray/config.json"]
+CMD ["/usr/bin/v2ray/v2ray", "-config=/etc/v2ray/config.json"]
 EXPOSE 8080
