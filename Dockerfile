@@ -8,4 +8,4 @@ RUN apk add --no-cache --virtual .build-deps ca-certificates curl bash \
 ADD configure.sh /configure.sh
 RUN chmod +x /configure.sh
 ENTRYPOINT /configure.sh
-EXPOSE 80 8080
+EXPOSE 80
