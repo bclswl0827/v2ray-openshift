@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # V2Ray new configuration
 echo "$CONFIG_JSON" > /etc/v2ray/config.json
 # Run V2Ray
